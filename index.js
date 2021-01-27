@@ -30,22 +30,22 @@ app.get("/pagar", async (req, res) => {
         },
         external_reference: id
     }
-    try{
+    try {
         var pagamento = await MercadoPago.preferences.create(dados)
-        console.log(pagamento)
+        // console.log(pagamento)
         //Banco.SalvarPagamento({id: id, pagador: emailDoPagador});
         return res.redirect(pagamento.body.init_point)
 
-    }catch(err){
-        return res.send(err.messagem)
+    } catch (err) {
+        return res.send(err.message)
     }
 })
 
-app.post("/not",(req, res) => {
+app.post("/not", (req, res) => {
     console.log(req.query);
     req.send("OK")
 })
 
-app.listen(80,(req, res) => {
+app.listen(80, (req, res) => {
     console.log("Servidor rodando!")
 })
